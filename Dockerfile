@@ -14,4 +14,14 @@ RUN pip install rasterio shapely pyshp tqdm \
     conda install -y gdal && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install jupyter-matplotlib && \
-    jupyter labextension install @lckr/jupyterlab_variableinspector
+    jupyter labextension install @lckr/jupyterlab_variableinspector && \
+    jupyter labextension install @jupyterlab/git && \
+    pip install jupyterlab-git && \
+    jupyter serverextension enable --py jupyterlab_git && \
+    jupyter labextension install jupyterlab-drawio && \
+    jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
+    jupyter labextension install @ryantam626/jupyterlab_code_formatter && \
+    pip install jupyterlab_code_formatter && \
+    jupyter serverextension enable --py jupyterlab_code_formatter && \
+    pip install black && \
+    jupyter labextension install @jupyterlab/geojson-extension
