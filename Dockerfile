@@ -1,15 +1,17 @@
-# FROM jupyter/scipy-notebook:41e066e5caa8
-FROM jupyter/pyspark-notebook:65761486d5d3
+FROM jupyter/all-spark-notebook:65761486d5d3
 
 USER root
 
 RUN apt-get update && \
-    apt-get install -y gdal-bin
+    apt-get install -y gdal-bin && \
+    apt-get install -y nodejs
 
 USER jovyan
 
-RUN pip install rasterio shapely pyshp tqdm sentinelsat pytest && \
-    conda install -y gdal
-
-# ENTRYPOINT ["tini", "-g", "--"]
-# CMD ["start-notebook.sh"]
+RUN pip install rasterio shapely pyshp tqdm \
+    psycopg2-binary sqlalchemy sentinelsat \
+    loguru pytest && \
+    conda install -y gdal && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+    jupyter labextension install jupyter-matplotlib && \
+    jupyter labextension install @lckr/jupyterlab_variableinspector
