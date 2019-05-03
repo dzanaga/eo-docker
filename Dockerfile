@@ -12,6 +12,10 @@ RUN pip install rasterio shapely pyshp tqdm \
     psycopg2-binary sqlalchemy sentinelsat \
     loguru pytest && \
     conda install -y gdal && \
+    echo "install.packages('rgdal',repos='https://cran.rstudio.com',configure.args=c('--with-gdal-config=/opt/conda/bin/gdal-config', '--with-proj-include=/opt/conda/include','--with-proj-lib=/opt/conda/lib','--with-proj-share=/opt/conda/share/proj/'))" | R --no-save && \
+    echo "install.packages('raster',repos='https://cran.rstudio.com')" | R --no-save && \
+    echo "install.packages('tidyverse',repos='https://cran.rstudio.com')" | R --no-save && \
+    echo "install.packages('gdalUtils',repos='https://cran.rstudio.com')" | R --no-save && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install jupyter-matplotlib && \
     jupyter labextension install @lckr/jupyterlab_variableinspector && \
@@ -19,9 +23,4 @@ RUN pip install rasterio shapely pyshp tqdm \
     pip install jupyterlab-git && \
     jupyter serverextension enable --py jupyterlab_git && \
     jupyter labextension install jupyterlab-drawio && \
-    jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
-    jupyter labextension install @ryantam626/jupyterlab_code_formatter && \
-    pip install jupyterlab_code_formatter && \
-    jupyter serverextension enable --py jupyterlab_code_formatter && \
-    pip install black && \
     jupyter labextension install @jupyterlab/geojson-extension
