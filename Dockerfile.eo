@@ -1,6 +1,0 @@
-FROM ubuntu:bionic
-
-RUN apt-get update && \
-    apt-get install -y python3.6 python3-pip gdal-bin && \
-    pip3 install numpy pandas shapely rasterio matplotlib \
-                 jupyter
