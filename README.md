@@ -13,7 +13,7 @@ Usually handy for prototyping on Cloud providers and clusters such as Vito MEP o
 ### Build
 
 The image is already available on the DockerHub.
-Can be built with `docker build -t redblanket/eojup:latest .`
+Can be built with `docker build -f Dockerfile.slim -t redblanket/eojupy_slim:latest .`
 
 
 ## Usage
@@ -88,3 +88,10 @@ And then in the script, change:
 ```
 This will cause the notebook to start and be accessible directly with the password you used
 to create the hashed password, istead of the token.
+
+# Installing new packages
+
+Upon starting the container the first time it might be necessary to run:
+```sudo chown -R `id -u`:`id -g` /opt/conda/```
+and
+```sudo chown -R `id -u`:`id -g` /home/jovyan/.conda/```

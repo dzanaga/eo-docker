@@ -10,8 +10,9 @@ USER jovyan
 
 RUN pip install rasterio shapely pyshp tqdm \
     psycopg2-binary sqlalchemy sentinelsat \
-    loguru pytest && \
+    loguru pytest ipympl s2cloudless eo-learn ipympl && \
     conda install -y gdal && \
+    conda install -y -c conda-forge opencv && \
     echo "install.packages('rgdal',repos='https://cran.rstudio.com',configure.args=c('--with-gdal-config=/opt/conda/bin/gdal-config', '--with-proj-include=/opt/conda/include','--with-proj-lib=/opt/conda/lib','--with-proj-share=/opt/conda/share/proj/'))" | R --no-save && \
     echo "install.packages('raster',repos='https://cran.rstudio.com')" | R --no-save && \
     echo "install.packages('tidyverse',repos='https://cran.rstudio.com')" | R --no-save && \

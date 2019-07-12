@@ -1,0 +1,35 @@
+FROM jupyter/scipy-notebook:d4cbf2f80a2a
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y nodejs
+
+USER jovyan
+
+RUN conda install -y -c conda-forge opencv && \
+    conda install -y -c conda-forge cartopy && \
+    conda install -y gdal
+
+RUN pip install sentinelhub \
+                geopandas \
+                descartes \
+                contextily \
+                rasterio \
+                shapely \
+                pyshp \
+                tqdm \
+                psycopg2-binary \
+                sqlalchemy \
+                sentinelsat \
+                loguru \
+                pytest \
+                ipympl \
+                s2cloudless \
+                ipykernel && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+    jupyter labextension install jupyter-matplotlib && \
+    jupyter labextension install @jupyterlab/geojson-extension && \
+    jupyter labextension install @lckr/jupyterlab_variableinspector
+
+# eo-learn

@@ -16,7 +16,7 @@ MINIO_ACCESS_KEY="mepminio"
 MINIO_SECRET_KEY="mepminio"
 
 # Other settings
-IMAGE="redblanket/eojupy:latest"
+IMAGE="redblanket/eojupy_slim:latest"
 
 NB_USERNAME="jovyan" # Changing this leads to errors... to be tested
 HOST_WORK="/home/`id -u -n`/"
@@ -31,6 +31,7 @@ docker rm $MINIO_CONTAINER_NAME
 # Start containers
 docker run -d \
   --restart always \
+  -m 6G \
   --name ${JUPY_CONTAINER_NAME} \
   --network host \
   --pid host \
